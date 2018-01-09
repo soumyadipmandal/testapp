@@ -1,0 +1,64 @@
+<html>
+   <head lang="en">
+    <link rel="shortcut icon" href="/suniti/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/suniti/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <title>SUBSTITUTIONS ENTRY</title>
+    <script src="/substmtce/js/angular.min.js"></script>
+    <script src="/substmtce/js/substmtce.js"></script>
+    <link href='/substmtce/css/substmtce.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body ng-app="MaBhaApp">
+
+<h2 align="left">SUBSTITUTIONS ENTRY</h2>
+<br/>
+
+<div ng-controller="substCtrl" align="left">
+  <table align="left">
+  <tr>
+    <td><p style="width: 100px; height: 25px; color:#47b03c; font-weight: bold; display: inline;">OWNER</p></td>
+    <td><select style="padding:1px 4px; width: 150px; height: 25px; color: black; display: inline;"
+              ng-model="oneown"
+              ng-options="own.name for own in ownnames"
+              ng-change="updown()">
+        </select>
+    </td>
+    <td><p  style="width: 100px; height: 25px; color:#47b03c; font-weight: bold; display: inline;">WHAT IS</p></td>
+    <td><input ng-model="whatis" style="width: 150px; height: 25px; color: black; display: inline;"/></td>
+    <td><p style="width: 100px; height: 25px; color:#47b03c; font-weight: bold; display: inline;">&nbsp;&nbsp;&nbsp;WHAT SHOULD BE</p></td>
+    <td><input ng-model="whatshouldbe" style="width: 150px; height: 25px; color: black; display: inline;"/></td>
+  </tr>
+  </table>
+
+  <br/>
+  <br/>
+  <br/>
+    &nbsp;&nbsp;&nbsp;
+    <input  ng-click="savsubs()"    id="sav" type="button" value="Save" class="button" title="Save 1 pair"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input  ng-click="delsubs()"    id="del" type="button" value="Delete" class="button" title="Delete 1 pair"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input  ng-click="repsubs()"    id="rep" type="button" value="List" class="button" title="List all pairs"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input  ng-click="clrsubs()"    id="clr" type="button" value="Clear" class="button" title="Clear Form"/>
+
+  <br/>
+  <h2>List Output</h2>
+
+  <table id="litab" align="left">
+    <tr style="color:#47b03c; font-weight: bold;">
+      <td>OWNER</td>
+      <td>WHAT IS</td>
+      <td>WHAT SHOULD BE</td>
+    </tr>
+    <tr ng-repeat="onerow in model" >
+      <td>{{ onerow.OWNER }}</td>
+      <td>{{ onerow.WHATIS }}</td>
+      <td>{{ onerow.WHATSHOULDBE }}</td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>
